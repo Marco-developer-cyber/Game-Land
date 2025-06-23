@@ -1,0 +1,43 @@
+# Зависимости
+node_modules/
+npm-debug.log*
+
+# Скомпилированные файлы (TypeScript, Webpack, etc.)
+dist/
+build/
+out/
+*.js.map
+
+# Логи
+*.log
+npm-debug.log*
+
+# Окружение
+.env
+.env.local
+.env.development
+.env.production
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Тесты и временные файлы
+coverage/
+*.tmp
+*.bak
+*.swp
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
