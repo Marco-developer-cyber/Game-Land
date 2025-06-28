@@ -4,7 +4,7 @@ import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import App from './App.tsx'
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 
 
 const root = ReactDOM.createRoot(
@@ -17,4 +17,4 @@ root.render(
   </React.StrictMode>
 );
 
-reportWebVitals();
+// reportWebVitals();

@@ -1,4 +1,4 @@
-import Home from "./Pages/Home";
+import Home from "./Pages/Genres";
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
 

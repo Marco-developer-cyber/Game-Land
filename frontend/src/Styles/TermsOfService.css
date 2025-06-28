@@ -1,0 +1,151 @@
+.terms-container {
+  max-width: 1000px;
+  margin: 70px auto;
+  padding: 40px 20px;
+  color: #CBBBF6;
+  background-color: #0D0D0D;
+}
+
+.terms-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.terms-header h1 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #CBBBF6, #5F4B8B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.last-updated {
+  color: rgba(203, 187, 246, 0.7);
+  font-size: 0.9rem;
+}
+
+.terms-intro {
+  background-color: rgba(26, 26, 46, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  border-left: 3px solid #5F4B8B;
+}
+
+.terms-intro p {
+  line-height: 1.6;
+}
+
+.terms-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.term-card {
+  background-color: rgba(26, 26, 46, 0.7);
+  padding: 25px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(95, 75, 139, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.term-card:hover {
+  border-color: #5F4B8B;
+  box-shadow: 0 10px 20px rgba(95, 75, 139, 0.2);
+}
+
+.term-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #5F4B8B, #E94560);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: white;
+}
+
+.term-card h3 {
+  font-size: 1.2rem;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.term-card p {
+  line-height: 1.5;
+  color: rgba(203, 187, 246, 0.8);
+}
+
+.terms-footer {
+  background-color: rgba(26, 26, 46, 0.5);
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.terms-footer p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.terms-footer a {
+  color: #5F4B8B;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.terms-footer a:hover {
+  color: #CBBBF6;
+  text-decoration: underline;
+}
+
+.acceptance-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.acceptance-box input {
+  width: 18px;
+  height: 18px;
+  accent-color: #5F4B8B;
+}
+
+.acceptance-box label {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .terms-header h1 {
+    font-size: 2rem;
+  }
+  
+  .terms-sections {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .terms-container {
+    padding: 30px 15px;
+  }
+  
+  .terms-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .term-card {
+    padding: 20px;
+  }
+}

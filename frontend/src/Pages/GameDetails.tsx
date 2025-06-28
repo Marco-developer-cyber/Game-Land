@@ -1,130 +1,188 @@
-// import { motion } from "framer-motion";
-// import { Button } from "react-bootstrap";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faDownload } from "@fortawesome/free-solid-svg-icons";
-// import { useParams } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { 
+  faDownload, 
+  faStar, 
+  faCalendarAlt,
+  faUser,
+  faMicrochip,
+  faMemory,
+  faSdCard,
+  faDesktop,
+  faHeart
+} from "@fortawesome/free-solid-svg-icons";
+import { useParams } from "react-router-dom";
+import { featuredGames, type Game } from "../data/games";
+import '../Styles/GameDetails.css'; // Импорт стилей для GameDetails
 
-// // Импортируем данные игр и интерфейс из Home.tsx
-// // В реальном приложении это должно быть в отдельном файле или получаться с сервера
-// import { featuredGames } from "./Home";
+const GameDetails = () => {
+  const { id } = useParams<{ id?: string }>();
+  const gameId = id ? parseInt(id, 10) : 0;
+  const game = featuredGames.find((g: Game) => g.id === gameId);
 
-// // Интерфейс для игры (должен совпадать с интерфейсом в Home.tsx)
-// interface Game {
-//   id: number;
-//   title: string;
-//   genre: string;
-//   rating: number;
-//   communityRating: number;
-//   image: string;
-//   platforms: Array<any>; // FontAwesome icons
-//   description: string;
-//   releaseDate: string;
-//   developer: string;
-//   minRequirements: {
-//     os: string;
-//     processor: string;
-//     memory: string;
-//     graphics: string;
-//     storage: string;
-//   };
-//   recRequirements: {
-//     os: string;
-//     processor: string;
-//     memory: string;
-//     graphics: string;
-//     storage: string;
-//   };
-//   trailer: string;
-// }
+  if (!game) return <div className="text-center mt-5">Игра не найдена</div>;
 
-// const GameDetails = () => {
-//   const { id } = useParams<{ id?: string }>(); // Явная типизация для useParams
-//   const gameId = id ? parseInt(id, 10) : 0;
-//   const game = featuredGames.find((g: Game) => g.id === gameId);
+  // Анимации
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        when: "beforeChildren"
+      }
+    }
+  };
 
-//   if (!game) return <div className="text-center mt-5">Игра не найдена</div>;
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
 
-//   return (
-//     <motion.div
-//       initial={{ opacity: 0 }}
-//       animate={{ opacity: 1 }}
-//       transition={{ duration: 0.5 }}
-//       className="container mt-5"
-//     >
-//       <div
-//         className="card bg-dark text-light p-4"
-//         style={{
-//           borderRadius: "25px",
-//           background: "linear-gradient(135deg, #1a1a2e, #2e2e48)",
-//           boxShadow: "0 15px 50px rgba(0, 255, 204, 0.3)",
-//           padding: "30px",
-//         }}
-//       >
-//         <h1 className="display-3 text-center mb-4" style={{ textShadow: "2px 2px 10px #00ffcc" }}>
-//           {game.title}
-//         </h1>
-//         <div
-//           className="card-img-top mb-4"
-//           style={{
-//             height: "450px",
-//             backgroundImage: `url(${game.image})`,
-//             backgroundSize: "cover",
-//             backgroundPosition: "center",
-//             borderRadius: "20px",
-//             boxShadow: "0 5px 15px rgba(0, 0, 0, 0.7)",
-//           }}
-//         />
-//         <p className="lead text-center mb-4" style={{ fontSize: "1.2rem" }}>
-//           {game.description}
-//         </p>
-//         <h4 className="text-center mb-3">Системные требования</h4>
-//         <div className="row mb-4">
-//           <div className="col-md-6">
-//             <h5>Минимальные:</h5>
-//             <ul className="list-unstyled">
-//               <li><strong>OS:</strong> {game.minRequirements.os}</li>
-//               <li><strong>Процессор:</strong> {game.minRequirements.processor}</li>
-//               <li><strong>Память:</strong> {game.minRequirements.memory}</li>
-//               <li><strong>Видеокарта:</strong> {game.minRequirements.graphics}</li>
-//               <li><strong>Хранилище:</strong> {game.minRequirements.storage}</li>
-//             </ul>
-//           </div>
-//           <div className="col-md-6">
-//             <h5>Рекомендуемые:</h5>
-//             <ul className="list-unstyled">
-//               <li><strong>OS:</strong> {game.recRequirements.os}</li>
-//               <li><strong>Процессор:</strong> {game.recRequirements.processor}</li>
-//               <li><strong>Память:</strong> {game.recRequirements.memory}</li>
-//               <li><strong>Видеокарта:</strong> {game.recRequirements.graphics}</li>
-//               <li><strong>Хранилище:</strong> {game.recRequirements.storage}</li>
-//             </ul>
-//           </div>
-//         </div>
-//         <h4 className="text-center mb-3">Дополнительно</h4>
-//         <ul className="list-unstyled text-center">
-//           <li><strong>Дата выхода:</strong> {game.releaseDate}</li>
-//           <li><strong>Разработчик:</strong> {game.developer}</li>
-//           <li><strong>Рейтинг сообщества:</strong> {game.communityRating}/10</li>
-//           <li>
-//             <a href={game.trailer} target="_blank" rel="noopener noreferrer" className="text-info">
-//               Смотреть трейлер
-//             </a>
-//           </li>
-//         </ul>
-//         <div className="d-flex justify-content-center mt-4">
-//           <Button
-//             variant="success"
-//             size="lg"
-//             className="px-5 py-3"
-//             style={{ background: "#00cc00", border: "none", fontSize: "1.3rem" }}
-//           >
-//             <FontAwesomeIcon icon={faDownload} className="me-2" />
-//             Скачать
-//           </Button>
-//         </div>
-//       </div>
-//     </motion.div>
-//   );
-// };
+  return (
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="container py-5"
+    >
+      <motion.div
+        className="game-detail-card"
+        variants={itemVariants}
+      >
+        {/* Заголовок и основная информация */}
+        <div className="game-header">
+          <motion.h1 className="game-title" variants={itemVariants}>
+            {game.title}
+            <button className="favorite-btn">
+              <FontAwesomeIcon icon={faHeart} />
+            </button>
+          </motion.h1>
+          
+          <motion.div className="game-meta" variants={itemVariants}>
+            <div className="game-rating">
+              <FontAwesomeIcon icon={faStar} />
+              <span>{game.rating.toFixed(1)}</span>
+              <span className="community-rating">({game.communityRating}/10)</span>
+            </div>
+            <div className="game-genre">{game.genre}</div>
+          </motion.div>
+        </div>
 
-// export default GameDetails;
+        {/* Основное содержимое */}
+        <div className="game-content">
+          {/* Обложка и описание */}
+          <motion.div className="game-cover-container" variants={itemVariants}>
+            <div 
+              className="game-cover"
+              style={{ backgroundImage: `url(${game.image})` }}
+            />
+          </motion.div>
+          
+          <motion.div className="game-description" variants={itemVariants}>
+            <h2>Описание</h2>
+            <p>{game.description}</p>
+          </motion.div>
+
+          {/* Системные требования */}
+          <motion.div className="requirements-section" variants={itemVariants}>
+            <h2>Системные требования</h2>
+            <div className="requirements-grid">
+              <div className="requirements-card">
+                <h3>Минимальные</h3>
+                <div className="requirement-item">
+                  <FontAwesomeIcon icon={faDesktop} />
+                  <span>{game.minRequirements.os}</span>
+                </div>
+                <div className="requirement-item">
+                  <FontAwesomeIcon icon={faMicrochip} />
+                  <span>{game.minRequirements.processor}</span>
+                </div>
+                <div className="requirement-item">
+                  <FontAwesomeIcon icon={faMemory} />
+                  <span>{game.minRequirements.memory}</span>
+                </div>
+                <div className="requirement-item">
+                  <FontAwesomeIcon icon={faDesktop} />
+                  <span>{game.minRequirements.graphics}</span>
+                </div>
+                <div className="requirement-item">
+                  <FontAwesomeIcon icon={faSdCard} />
+                  <span>{game.minRequirements.storage}</span>
+                </div>
+              </div>
+
+              <div className="requirements-card">
+                <h3>Рекомендуемые</h3>
+                <div className="requirement-item">
+                  <FontAwesomeIcon icon={faDesktop} />
+                  <span>{game.recRequirements.os}</span>
+                </div>
+                <div className="requirement-item">
+                  <FontAwesomeIcon icon={faMicrochip} />
+                  <span>{game.recRequirements.processor}</span>
+                </div>
+                <div className="requirement-item">
+                  <FontAwesomeIcon icon={faMemory} />
+                  <span>{game.recRequirements.memory}</span>
+                </div>
+                <div className="requirement-item">
+                  <FontAwesomeIcon icon={faDesktop} />
+                  <span>{game.recRequirements.graphics}</span>
+                </div>
+                <div className="requirement-item">
+                  <FontAwesomeIcon icon={faSdCard} />
+                  <span>{game.recRequirements.storage}</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Дополнительная информация */}
+          <motion.div className="game-info" variants={itemVariants}>
+            <h2>Детали</h2>
+            <div className="info-grid">
+              <div className="info-item">
+                <FontAwesomeIcon icon={faCalendarAlt} />
+                <span>Дата выхода: {game.releaseDate}</span>
+              </div>
+              <div className="info-item">
+                <FontAwesomeIcon icon={faUser} />
+                <span>Разработчик: {game.developer}</span>
+              </div>
+              <div className="info-item">
+                <a href={game.trailer} target="_blank" rel="noopener noreferrer">
+                  Смотреть трейлер
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Кнопка скачивания */}
+          <motion.div 
+            className="download-btn-container"
+            variants={itemVariants}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button variant="primary" size="lg" className="download-btn">
+              <FontAwesomeIcon icon={faDownload} className="me-2" />
+              Скачать
+            </Button>
+          </motion.div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+export default GameDetails;
