@@ -7,6 +7,7 @@ import {
 export interface Game {
   id: number;
   title: string;
+   texture?: string;
   genre: string;
   rating: number;
   communityRating: number;
@@ -40,7 +41,8 @@ export const featuredGames: Game[] = [
     genre: 'RPG',
     rating: 4.5,
     communityRating: 8.5,
-    image: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co2r7f.jpg',
+    image: 'https://cdn.wccftech.com/wp-content/uploads/2023/08/Cyberpunk-2077-2.0-patch.jpg',
+    texture: 'https://variety.com/wp-content/uploads/2023/10/cyberpunk.jpeg?w=1000&h=667&crop=1',
     platforms: [faSteam, faXbox, faPlaystation],
     description: 'Cyberpunk 2077 — это приключенческая ролевая игра с открытым миром, действие которой происходит в Найт-Сити, мегаполисе, одержимом властью, гламуром и модификациями тела.',
     releaseDate: '10 декабря 2020',
@@ -68,7 +70,8 @@ export const featuredGames: Game[] = [
     genre: 'Souls-like',
     rating: 4.8,
     communityRating: 9.2,
-    image: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co4j7a.jpg',
+    image: 'https://i.ytimg.com/vi/Djtsw5k_DNc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCJBY-G1qnyUFHpoFnI563WzLD4zQ',
+    texture: 'https://i.ytimg.com/vi/Djtsw5k_DNc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCJBY-G1qnyUFHpoFnI563WzLD4zQ',
     platforms: [faSteam, faPlaystation],
     description: 'Elden Ring — это фэнтезийная экшн-RPG с открытым миром от FromSoftware и Джорджа Р. Р. Мартина. Исследуйте Междуземье и станьте Элден Лордом.',
     releaseDate: '25 февраля 2022',
@@ -96,7 +99,8 @@ export const featuredGames: Game[] = [
     genre: 'Action',
     rating: 4.9,
     communityRating: 9.4,
-    image: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co5hf2.jpg',
+    image: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/capsule_616x353.jpg?t=1750909504',
+    texture: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/capsule_616x353.jpg?t=1750909504',
     platforms: [faPlaystation],
     description: 'Присоединяйтесь к Кратосу и Атрею в их эпическом путешествии по девяти царствам в поисках ответов, пока приближается Рагнарёк.',
     releaseDate: '9 ноября 2022',
@@ -124,7 +128,8 @@ export const featuredGames: Game[] = [
     genre: 'RPG',
     rating: 4.9,
     communityRating: 9.8,
-    image: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co1wyy.jpg',
+    image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/292030/ad9240e088f953a84aee814034c50a6a92bf4516/header.jpg?t=1749199563',
+    texture: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/292030/ad9240e088f953a84aee814034c50a6a92bf4516/header.jpg?t=1749199563',
     platforms: [faSteam, faXbox, faPlaystation],
     description: 'Вы — Геральт из Ривии, наёмный охотник на чудовищ. Перед вами — континент, раздираемый войной, населенный монстрами, и вам предстоит принять самое важное решение в жизни.',
     releaseDate: '19 мая 2015',
@@ -152,7 +157,8 @@ export const featuredGames: Game[] = [
     genre: 'Action',
     rating: 4.8,
     communityRating: 9.1,
-    image: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co1tab.jpg',
+    image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_616x353.jpg?t=1720558643',
+    texture: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_616x353.jpg?t=1720558643',
     platforms: [faSteam, faXbox, faPlaystation],
     description: 'Америка, 1899 год. Эпоха Дикого Запада подходит к концу. Следуйте за Артуром Морганом и бандой Ван дер Линде в их борьбе за выживание.',
     releaseDate: '26 октября 2018',
@@ -180,7 +186,8 @@ export const featuredGames: Game[] = [
     genre: 'Action',
     rating: 4.7,
     communityRating: 8.9,
-    image: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co4leh.jpg',
+    image: 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/02/horizon-forbidden-west-complete-guide-00-featured-image.jpg',
+    texture: 'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/02/horizon-forbidden-west-complete-guide-00-featured-image.jpg',
     platforms: [faPlaystation],
     description: 'Присоединяйтесь к Элой в её путешествии по запретному западу, постапокалиптическому открытому миру, полному загадочных монстров.',
     releaseDate: '18 февраля 2022',
